@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^11.0.0"
   },
   "scripts": {
     "test": "mocha --recursive test/"
