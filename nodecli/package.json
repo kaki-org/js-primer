@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^14.0.0",
+    "commander": "^15.0.0",
     "marked": "18.0"
   },
   "type": "module",
