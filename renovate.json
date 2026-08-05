@@ -2,5 +2,43 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "automergeStrategy": "merge-commit",
+  "packageRules": [
+    {
+      "description": "テスト用 npm パッケージの minor/patch は automerge",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": [
+        "/^@types//",
+        "/^mocha$/"
+      ]
+    },
+    {
+      "description": "信頼できる GitHub Actions の minor/patch/digest は automerge",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
+      ],
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": [
+        "actions/checkout",
+        "actions/setup-node",
+        "release-drafter/release-drafter",
+        "ruby/setup-ruby"
+      ]
+    }
   ]
 }
