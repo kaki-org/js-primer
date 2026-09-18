@@ -30,23 +30,26 @@ nvm use "$NODE_VERSION" >/dev/null
 NODE_BIN="$NVM_DIR/versions/node/v${NODE_VERSION}/bin"
 export PATH="$NODE_BIN:$PATH"
 
-# Ensure interactive agent shells resolve the pinned Node ahead of any
-# system-provided node (the exec-daemon ships an older node on PATH).
-BASHRC="$HOME/.bashrc"
-MARKER="# js-primer: pin Node.js from .tool-versions"
-if ! grep -qF "$MARKER" "$BASHRC" 2>/dev/null; then
-  {
-    echo ""
-    echo "$MARKER"
-    echo "export PATH=\"$NODE_BIN:\$PATH\""
-  } >> "$BASHRC"
-fi
-
 # --- bun ---------------------------------------------------------------------
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 if ! command -v bun >/dev/null 2>&1 || [ "$(bun -v 2>/dev/null)" != "$BUN_VERSION" ]; then
   curl -fsSL https://bun.sh/install | bash -s "bun-v${BUN_VERSION}"
+fi
+
+# Ensure interactive agent shells resolve the pinned Node ahead of any
+# system-provided node (the exec-daemon ships an older node on PATH), and put
+# bun on PATH as well.
+BASHRC="$HOME/.bashrc"
+MARKER="# js-primer: pin Node.js and bun (managed by .cursor/install.sh)"
+if ! grep -qF "$MARKER" "$BASHRC" 2>/dev/null; then
+  {
+    echo ""
+    echo "$MARKER"
+    echo "export PATH=\"$NODE_BIN:\$PATH\""
+    echo "export BUN_INSTALL=\"\$HOME/.bun\""
+    echo "export PATH=\"\$BUN_INSTALL/bin:\$PATH\""
+  } >> "$BASHRC"
 fi
 
 # --- Project dependencies ----------------------------------------------------
