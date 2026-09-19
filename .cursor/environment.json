@@ -1,0 +1,17 @@
+{
+  "name": "js-primer",
+  "install": "bash .cursor/install.sh",
+  "terminals": [
+    {
+      "name": "local-server",
+      "description": "Static server for the browser samples. Open pages at http://localhost:3000/<dir>/index.html (e.g. /todoapp/, /ajaxapp/, /chapter15/).",
+      "command": "export PATH=\"$HOME/.nvm/versions/node/v24.19.0/bin:$HOME/.bun/bin:$PATH\"; exec npx --yes @js-primer/local-server --port 3000 ."
+    }
+  ],
+  "ports": [
+    {
+      "name": "local-server",
+      "port": 3000
+    }
+  ]
+}
