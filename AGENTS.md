@@ -12,7 +12,7 @@
 
 - サンプルコードを章ごと（`chapter1`〜`chapter29` など）に配置した学習用リポジトリです。
 - 実際に「開発」対象となるのは次の 3 つです。
-  - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `commander`、`node --test` でテスト）
+  - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `node:util` の `parseArgs`、`node --test` でテスト）
   - `todoapp` … ブラウザ用 Todo アプリ（ES Modules、`node --test` でモデル等をテスト）
   - `ajaxapp` … GitHub ユーザー情報を取得するブラウザ用サンプル（外部 API を利用）
 - CI（`.github/workflows/main.yml`）は `nodecli`・`todoapp`・`ajaxapp` で `npm install` → `npm test` を実行します。
@@ -74,7 +74,7 @@ npx --yes @js-primer/local-server --port 3000 .
 
 - ファイル名の大文字小文字は Linux では区別されます。`import` とディスク上のファイル名を必ず一致させてください
   （過去に `TodoLIstView.js` と `TodoListView.js` の不一致で Todo アプリが 404 になっていました）。
-- `nodecli` の CLI（`node main.js <ファイル>`）は、`commander` v15 で位置引数の扱いが厳格化されたため、
-  現状は引数付き実行でエラーになります。中心的な `md2html` のロジックは `nodecli` のテストでカバーされています。
+- `nodecli` の CLI は `node main.js <ファイル>` で実行し、`--gfm` を付けると GFM が有効になります
+  （例: `node main.js --gfm sample.md`）。CLI 部分はテスト対象外で、`md2html` のロジックは `nodecli` のテストでカバーされています。
 - ブラウザ用サンプルの依存はリポジトリにコミットしません（`node_modules` は `.gitignore` 済み）。
   ロックファイルを不用意に書き換えないでください（`chapter29` は `--frozen-lockfile` を使用）。
