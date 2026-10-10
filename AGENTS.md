@@ -19,12 +19,14 @@
 
 ## ツールチェーン（`.tool-versions` で固定）
 
-- Node.js `24.19.0`（nvm で導入）
-- bun `1.3.14`
+- Node.js（`nodejs` 行、nvm で導入）と bun（`bun` 行）のバージョンは `.tool-versions` を正とします。
+  Renovate が `.tool-versions` を更新するため、本ファイルにはバージョン番号を重複記載しません。
+- Node.js は 24 系を維持します（本家 js-primer は `.node-version` で v26 系ですが、当リポジトリは追従しません）。
+  CI（`.github/workflows/main.yml`）の `node-version: "24"` もこれに合わせています。
 
-Cloud Agent 環境では `.cursor/install.sh` がこれらを導入し、ログインシェルの `PATH` に反映します。
+Cloud Agent 環境では `.cursor/install.sh` が `.tool-versions` を読んでこれらを導入し、ログインシェルの `PATH` に反映します。
 ベースイメージには古い `node` が `PATH` 上で優先される場合があるため、`.bashrc` で pin しています。
-新しいターミナルでは `node -v` が `v24.19.0`、`bun -v` が `1.3.14` を返すことを前提にしてください。
+新しいターミナルでは `node -v` / `bun -v` が `.tool-versions` の値と一致することを前提にしてください。
 
 ## セットアップ
 
