@@ -1,0 +1,12 @@
+{
+  "name": "ajaxapp",
+  "version": "1.0.0",
+  "description": "Ajax Example",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*-test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
