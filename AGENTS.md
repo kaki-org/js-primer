@@ -15,7 +15,7 @@
   - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `commander`、`node --test` でテスト）
   - `todoapp` … ブラウザ用 Todo アプリ（ES Modules、`node --test` でモデル等をテスト）
   - `ajaxapp` … GitHub ユーザー情報を取得するブラウザ用サンプル（外部 API を利用）
-- CI（`.github/workflows/main.yml`）は `nodecli` と `todoapp` で `npm install` → `npm test` を実行します。
+- CI（`.github/workflows/main.yml`）は `nodecli`・`todoapp`・`ajaxapp` で `npm install` → `npm test` を実行します。
 
 ## ツールチェーン（`.tool-versions` で固定）
 
@@ -50,6 +50,7 @@ CI と同じ内容です（変更に関係する側を実行してください�
 ```bash
 cd nodecli && npm test    # 2 件成功する想定
 cd todoapp && npm test    # 14 件成功する想定
+cd ajaxapp && npm test    # 8 件成功する想定（fetch はスタブし外部 API にはアクセスしない）
 ```
 
 ## ブラウザ用サンプルの配信
