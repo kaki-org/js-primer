@@ -171,6 +171,10 @@
 
 * [Node.jsでHello World](./nodecli/)
 
+### 第32章 ユースケース: Todoアプリ
+
+* [Todoアプリ](./todoapp/index.html)
+
 ### 参考
 
 * [JavaScript Primer](https://jsprimer.net/)
