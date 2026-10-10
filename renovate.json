@@ -17,8 +17,7 @@
       "automerge": true,
       "platformAutomerge": true,
       "matchPackageNames": [
-        "/^@types//",
-        "/^mocha$/"
+        "/^@types//"
       ]
     },
     {

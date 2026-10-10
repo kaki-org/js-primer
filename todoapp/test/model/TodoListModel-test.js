@@ -1,8 +1,9 @@
 import * as assert from "node:assert";
+import { test } from "node:test";
 import { TodoListModel } from "../../src/model/TodoListModel.js";
 import { TodoItemModel } from "../../src/model/TodoItemModel.js";
 
-it("TodoListModel#addTodo.emptyTitle", () => {
+test("TodoListModel#addTodo.emptyTitle", () => {
   const todoListModel = new TodoListModel();
   assert.strictEqual(todoListModel.getTotalCount(), 0);
   const todoItem = new TodoItemModel({
@@ -13,7 +14,8 @@ it("TodoListModel#addTodo.emptyTitle", () => {
   todoListModel.addTodo(todoItem);
   assert.strictEqual(todoListModel.getTotalCount(), 0);
 });
-it("TodoListModel#addTodo.withTitle", () => {
+
+test("TodoListModel#addTodo.withTitle", () => {
   const todoListModel = new TodoListModel();
   assert.strictEqual(todoListModel.getTotalCount(), 0);
   const todoItem = new TodoItemModel({
@@ -24,7 +26,8 @@ it("TodoListModel#addTodo.withTitle", () => {
   todoListModel.addTodo(todoItem);
   assert.strictEqual(todoListModel.getTotalCount(), 1);
 });
-it("TodoListModel#getTodoItems", () => {
+
+test("TodoListModel#getTodoItems", () => {
   const todoListModel = new TodoListModel();
   const todoItem = new TodoItemModel({
     title: "this is test",
@@ -35,7 +38,8 @@ it("TodoListModel#getTodoItems", () => {
   assert.strictEqual(todoListModel.getTodoItems()[0].title, "this is test");
   assert.strictEqual(todoListModel.getTodoItems()[0].completed, false);
 });
-it("TodoListModel#updateTodo", () => {
+
+test("TodoListModel#updateTodo", () => {
   const todoListModel = new TodoListModel();
   const todoItem = new TodoItemModel({
     title: "this is test",
@@ -49,7 +53,8 @@ it("TodoListModel#updateTodo", () => {
   });
   assert.strictEqual(todoListModel.getTodoItems()[0].completed, true);
 });
-it("TodoListModel#deleteTodo", () => {
+
+test("TodoListModel#deleteTodo", () => {
   const todoListModel = new TodoListModel();
   const todoItem = new TodoItemModel({
     title: "this is test",

@@ -31,3 +31,9 @@ jobs:
       - name: Run test todoapp
         run: npm test
         working-directory: ./todoapp
+      - name: Install Dependencies ajaxapp
+        run: npm install
+        working-directory: ./ajaxapp
+      - name: Run test ajaxapp
+        run: npm test
+        working-directory: ./ajaxapp
