@@ -13,7 +13,7 @@ export class TodoItemView {
       ? element`<li><input type="checkbox" class="checkbox" checked><s>${todoItem.title}</s><button class="delete">x</button></li>`
       : element`<li><input type="checkbox" class="checkbox">${todoItem.title}<button class="delete">x</button></li>`;
     const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
-    inputCheckboxElement.addEventListener("click", () => {
+    inputCheckboxElement.addEventListener("change", () => {
       // コールバック関数に変更
       onUpdateTodo({
         id: todoItem.id,
