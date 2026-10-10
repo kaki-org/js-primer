@@ -1,21 +1,24 @@
 import * as assert from "node:assert";
+import { test } from "node:test";
 import { TodoItemModel } from "../../src/model/TodoItemModel.js";
 
-it("isEmptyTitle", () => {
+test("isEmptyTitle", () => {
   const todoItem = new TodoItemModel({
     title: "",
     completed: false,
   });
   assert.strictEqual(todoItem.isEmptyTitle(), true);
 });
-it("isNotEmptyTitle", () => {
+
+test("isNotEmptyTitle", () => {
   const todoItem = new TodoItemModel({
     title: "title",
     completed: false,
   });
   assert.strictEqual(todoItem.isEmptyTitle(), false);
 });
-it("isIncrementIndex", () => {
+
+test("isIncrementIndex", () => {
   const todoItem = new TodoItemModel({
     title: "title",
     completed: false,
