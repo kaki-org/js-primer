@@ -12,8 +12,8 @@
 
 - サンプルコードを章ごと（`chapter1`〜`chapter29` など）に配置した学習用リポジトリです。
 - 実際に「開発」対象となるのは次の 3 つです。
-  - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `commander`、mocha テストあり）
-  - `todoapp` … ブラウザ用 Todo アプリ（ES Modules、mocha でモデルをテスト）
+  - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `commander`、`node --test` でテスト）
+  - `todoapp` … ブラウザ用 Todo アプリ（ES Modules、`node --test` でモデル等をテスト）
   - `ajaxapp` … GitHub ユーザー情報を取得するブラウザ用サンプル（外部 API を利用）
 - CI（`.github/workflows/main.yml`）は `nodecli` と `todoapp` で `npm install` → `npm test` を実行します。
 
@@ -49,7 +49,7 @@ CI と同じ内容です（変更に関係する側を実行してください�
 
 ```bash
 cd nodecli && npm test    # 2 件成功する想定
-cd todoapp && npm test    # 8 件成功する想定
+cd todoapp && npm test    # 14 件成功する想定
 ```
 
 ## ブラウザ用サンプルの配信
