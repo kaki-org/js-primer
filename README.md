@@ -1,8 +1,14 @@
 # js-primer
 
-元はこちら。 <https://github.com/asciidwango/js-primer>
+本家はこちら。 <https://github.com/js-primer/js-primer> （ウェブ版: <https://jsprimer.net/>）
 本家からforkはせず、一旦個別に作成してみる
 各ディレクトリにてサンプルのコードを記載していく事にする。
+
+### 写経方針
+
+* 第1部（`source/basic/`）は章ごとに `chapterN/` を作り、`index.html` からサンプルの JS を読み込む
+* 第2部（`source/use-case/`）は本家のユースケース名に合わせたディレクトリ（`ajaxapp/` `nodecli/` `todoapp/`）で写経する。ただしアプリケーション開発の準備（`setup-local-env`）は `chapter29/`
+* 章番号は写経した時点の版に合わせている。本家の現行版で追加された章（イテレータとジェネレータ、第一部: おわりに）は未写経
 
 
 ## 第1部
