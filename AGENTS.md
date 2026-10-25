@@ -12,19 +12,21 @@
 
 - サンプルコードを章ごと（`chapter1`〜`chapter29` など）に配置した学習用リポジトリです。
 - 実際に「開発」対象となるのは次の 3 つです。
-  - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `commander`、mocha テストあり）
-  - `todoapp` … ブラウザ用 Todo アプリ（ES Modules、mocha でモデルをテスト）
+  - `nodecli` … Markdown→HTML 変換 CLI（`marked` / `node:util` の `parseArgs`、`node --test` でテスト）
+  - `todoapp` … ブラウザ用 Todo アプリ（ES Modules、`node --test` でモデル等をテスト）
   - `ajaxapp` … GitHub ユーザー情報を取得するブラウザ用サンプル（外部 API を利用）
-- CI（`.github/workflows/main.yml`）は `nodecli` と `todoapp` で `npm install` → `npm test` を実行します。
+- CI（`.github/workflows/main.yml`）は `nodecli`・`todoapp`・`ajaxapp` で `npm install` → `npm test` を実行します。
 
 ## ツールチェーン（`.tool-versions` で固定）
 
-- Node.js `24.19.0`（nvm で導入）
-- bun `1.3.14`
+- Node.js（`nodejs` 行、nvm で導入）と bun（`bun` 行）のバージョンは `.tool-versions` を正とします。
+  Renovate が `.tool-versions` を更新するため、本ファイルにはバージョン番号を重複記載しません。
+- Node.js は 24 系を維持します（本家 js-primer は `.node-version` で v26 系ですが、当リポジトリは追従しません）。
+  CI（`.github/workflows/main.yml`）の `node-version: "24"` もこれに合わせています。
 
-Cloud Agent 環境では `.cursor/install.sh` がこれらを導入し、ログインシェルの `PATH` に反映します。
+Cloud Agent 環境では `.cursor/install.sh` が `.tool-versions` を読んでこれらを導入し、ログインシェルの `PATH` に反映します。
 ベースイメージには古い `node` が `PATH` 上で優先される場合があるため、`.bashrc` で pin しています。
-新しいターミナルでは `node -v` が `v24.19.0`、`bun -v` が `1.3.14` を返すことを前提にしてください。
+新しいターミナルでは `node -v` / `bun -v` が `.tool-versions` の値と一致することを前提にしてください。
 
 ## セットアップ
 
@@ -49,7 +51,8 @@ CI と同じ内容です（変更に関係する側を実行してください�
 
 ```bash
 cd nodecli && npm test    # 2 件成功する想定
-cd todoapp && npm test    # 8 件成功する想定
+cd todoapp && npm test    # 14 件成功する想定
+cd ajaxapp && npm test    # 8 件成功する想定（fetch はスタブし外部 API にはアクセスしない）
 ```
 
 ## ブラウザ用サンプルの配信
@@ -71,7 +74,7 @@ npx --yes @js-primer/local-server --port 3000 .
 
 - ファイル名の大文字小文字は Linux では区別されます。`import` とディスク上のファイル名を必ず一致させてください
   （過去に `TodoLIstView.js` と `TodoListView.js` の不一致で Todo アプリが 404 になっていました）。
-- `nodecli` の CLI（`node main.js <ファイル>`）は、`commander` v15 で位置引数の扱いが厳格化されたため、
-  現状は引数付き実行でエラーになります。中心的な `md2html` のロジックは `nodecli` のテストでカバーされています。
+- `nodecli` の CLI は `node main.js <ファイル>` で実行し、`--gfm` を付けると GFM が有効になります
+  （例: `node main.js --gfm sample.md`）。CLI 部分はテスト対象外で、`md2html` のロジックは `nodecli` のテストでカバーされています。
 - ブラウザ用サンプルの依存はリポジトリにコミットしません（`node_modules` は `.gitignore` 済み）。
   ロックファイルを不用意に書き換えないでください（`chapter29` は `--frozen-lockfile` を使用）。

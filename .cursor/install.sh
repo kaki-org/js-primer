@@ -10,8 +10,8 @@ cd "$REPO_ROOT"
 # Read pinned versions from .tool-versions (fallback to known-good values).
 NODE_VERSION="$(awk '/^nodejs /{print $2}' .tool-versions 2>/dev/null || true)"
 BUN_VERSION="$(awk '/^bun /{print $2}' .tool-versions 2>/dev/null || true)"
-NODE_VERSION="${NODE_VERSION:-24.19.0}"
-BUN_VERSION="${BUN_VERSION:-1.3.14}"
+NODE_VERSION="${NODE_VERSION:-24.21.0}"
+BUN_VERSION="${BUN_VERSION:-1.4.3}"
 
 # --- Node.js via nvm ---------------------------------------------------------
 export NVM_DIR="$HOME/.nvm"

@@ -1,33 +1,32 @@
-// commanderモジュールからprogramオブジェクトをインポートする
-import { program } from "commander";
-
+// utilモジュールをutilオブジェクトとしてインポートする
+import * as util from "node:util";
 // fs/promisesモジュールをfsオブジェクトとしてインポートする
 import * as fs from "node:fs/promises";
 // md2htmlモジュールからmd2html関数をインポートする
 import { md2html } from "./md2html.js";
 
-// gfmオプションを定義する
-program.option("--gfm", "GFMを有効にする");
-// コマンドライン引数をcommanderでパースする
-program.parse(process.argv);
-// オプションのパース結果をオブジェクトとして取得する
-const options = program.opts();
-console.log(options.gfm);
-// コマンドライン引数で指定されなかったオプションにデフォルト値を上書きする
-const cliOptions = {
-  gfm: options.gfm ?? false,
-};
-
-// ファイルパスをprogram.args配列から取り出す
-const filePath = program.args[0];
-// console.log(filePath);
+// コマンドライン引数からファイルパスとオプション/フラグを受け取る
+const { values, positionals } = util.parseArgs({
+  allowPositionals: true,
+  options: {
+    // gfmフラグを定義する
+    gfm: {
+      type: "boolean",
+      default: false,
+    },
+  },
+});
+// ファイルパスをpositionals配列から取り出す
+const filePath = positionals[0];
 
 // ファイルを非同期で読み込む
 fs.readFile(filePath, { encoding: "utf8" })
   .then((file) => {
     // MarkdownファイルをHTML文字列に変換する
-    // gfmオプションを無効にする
-    const html = md2html(file, cliOptions);
+    const html = md2html(file, {
+      // gfmフラグのパース結果をオプションとして渡す
+      gfm: values.gfm,
+    });
     console.log(html);
   })
   .catch((err) => {

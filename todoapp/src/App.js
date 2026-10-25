@@ -1,4 +1,3 @@
-console.log("App.js: loaded");
 import { render } from "./view/html-util.js";
 import { TodoListView } from "./view/TodoListView.js";
 import { TodoItemModel } from "./model/TodoItemModel.js";
@@ -6,7 +5,6 @@ import { TodoListModel } from "./model/TodoListModel.js";
 
 export class App {
   constructor() {
-    console.log("App initialized");
     this.todoListView = new TodoListView();
     this.todoListModel = new TodoListModel([]);
   }

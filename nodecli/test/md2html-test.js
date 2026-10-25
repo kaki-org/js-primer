@@ -1,8 +1,9 @@
 import * as assert from "node:assert";
 import * as fs from "node:fs/promises";
+import { test } from "node:test";
 import { md2html } from "../md2html.js";
 
-it("converts Markdown to HTML (GFM=false)", async () => {
+test("converts Markdown to HTML (GFM=false)", async () => {
   // fs.readFileはPromiseを返すので、`await`式で読み込みが完了するまで待って内容を取得する
   const sample = await fs.readFile("test/fixtures/sample.md", {
     encoding: "utf8",
@@ -17,7 +18,7 @@ it("converts Markdown to HTML (GFM=false)", async () => {
   );
 });
 
-it("converts Markdown to HTML (GFM=true)", async () => {
+test("converts Markdown to HTML (GFM=true)", async () => {
   const sample = await fs.readFile("test/fixtures/sample.md", {
     encoding: "utf8",
   });
@@ -26,8 +27,7 @@ it("converts Markdown to HTML (GFM=true)", async () => {
   });
   // 末尾の改行の有無の違いを無視するため、変換後のHTMLのスペースをtrimメソッドで削除してから比較しています
   assert.strictEqual(
-    md2html(sample, { gfm: true 
-    }).trimEnd(),
+    md2html(sample, { gfm: true }).trimEnd(),
     expected.trimEnd()
   );
 });

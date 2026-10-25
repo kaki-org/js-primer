@@ -1,13 +1,19 @@
 # js-primer
 
-元はこちら。 <https://github.com/asciidwango/js-primer>
+本家はこちら。 <https://github.com/js-primer/js-primer> （ウェブ版: <https://jsprimer.net/>）
 本家からforkはせず、一旦個別に作成してみる
 各ディレクトリにてサンプルのコードを記載していく事にする。
+
+### 写経方針
+
+* 第1部（`source/basic/`）は章ごとに `chapterN/` を作り、`index.html` からサンプルの JS を読み込む
+* 第2部（`source/use-case/`）は本家のユースケース名に合わせたディレクトリ（`ajaxapp/` `nodecli/` `todoapp/`）で写経する。ただしアプリケーション開発の準備（`setup-local-env`）は `chapter29/`
+* 章番号は写経した時点の版に合わせている。本家の現行版で追加された章（イテレータとジェネレータ、第一部: おわりに）は未写経
 
 
 ## 第1部
 
-### 第1章 基本文法
+### 第1章 JavaScriptとは
 
 * [JavaScriptとは](./chapter1)
 
@@ -27,15 +33,15 @@
 ウェブ版の方が良さそうなので、この章はwebのリンクをつけておく事にする
 <https://jsprimer.net/basic/read-eval-print/>
 
-### 第５章 データ型とリテラル
+### 第5章 データ型とリテラル
 
 * [データ型とリテラル](./chapter5/index.html)
 
-### 第６章 演算子
+### 第6章 演算子
 
 * [演算子](./chapter6/index.html)
 
-### 第７章 暗黙的な型変換
+### 第7章 暗黙的な型変換
 
 * [暗黙的な型変換](./chapter7/index.html)
 
@@ -43,7 +49,7 @@
 
 * [関数と宣言](./chapter8/index.html)
 
-### 第9章 関数と宣言
+### 第9章 文と式
 
 * [文と式](./chapter9/index.html)
 
@@ -61,7 +67,7 @@
 
 ### 第13章 プロトタイプオブジェクト
 
-* [オブジェクト](./chapter13/index.html)
+* [プロトタイプオブジェクト](./chapter13/index.html)
 
 ### 第14章 配列
 
@@ -87,7 +93,7 @@
 
 * [関数とthis](./chapter19/index.html)
 
-### 第20章 関数とthis
+### 第20章 クラス
 
 * [クラス](./chapter20/index.html)
 
@@ -95,7 +101,7 @@
 
 * [例外処理](./chapter21/index.html)
 
-### 第22章 非同期処理
+### 第22章 非同期処理:Promise/Async Function
 
 * [非同期処理](./chapter22/index.html)
 
@@ -115,11 +121,13 @@
 
 * [Math](./chapter26/index.html)
 
-### 第27章 ECMAScriptモジュール(ES2015)
+### 第27章 ECMAScriptモジュール
 
 * [ECMAScriptモジュール](./chapter27/index.html)
 
 ### 第28章 ECMAScript
+
+写経対象外（README のみ）。本家の該当章（`source/basic/ecmascript/`）はサンプルコードを伴わないため、`chapter28/` は作らずメモだけ残す。
 
 バージョン | リリース時期
 --- | ---
@@ -159,9 +167,13 @@
 
 * [Ajax通信](./ajaxapp/index.html)
 
-### 第31章 ユースケース: Node.jsでCLIアプリケーション
+### 第31章 ユースケース: Node.jsでCLIアプリ
 
 * [Node.jsでHello World](./nodecli/)
+
+### 第32章 ユースケース: Todoアプリ
+
+* [Todoアプリ](./todoapp/index.html)
 
 ### 参考
 
