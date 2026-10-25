@@ -1,0 +1,7 @@
+# TODO: actionlint が ubuntu-26.04 を組み込みラベルとしてリリースするまで、
+# この設定でホストランナーのラベルを許可する。対応リリースが出たらこのファイルを削除する。
+# 参照: https://github.com/rhysd/actionlint/issues/682
+#       https://github.com/rhysd/actionlint/issues/761
+self-hosted-runner:
+  labels:
+    - ubuntu-26.04
