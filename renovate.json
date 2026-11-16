@@ -21,23 +21,11 @@
       ]
     },
     {
-      "description": "信頼できる GitHub Actions の minor/patch/digest は automerge",
+      "description": "GitHub Actions は Dependabot で更新する",
       "matchManagers": [
         "github-actions"
       ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "digest"
-      ],
-      "automerge": true,
-      "platformAutomerge": true,
-      "matchPackageNames": [
-        "actions/checkout",
-        "actions/setup-node",
-        "release-drafter/release-drafter",
-        "ruby/setup-ruby"
-      ]
+      "enabled": false
     }
   ]
 }
