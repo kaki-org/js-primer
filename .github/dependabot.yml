@@ -1,11 +1,5 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/nodecli"
-  schedule:
-    interval: daily
-    time: "05:00"
-  open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: '/'
   schedule:
